@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {LoadingScreen} from './loading-screen/loading-screen';
+import {DesktopShell} from './desktop-shell/desktop-shell';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.html',
+  imports: [
+    LoadingScreen,
+    DesktopShell
+  ],
   styleUrl: './app.scss'
 })
 export class App {
-  protected title = 'kvika-os';
 }
