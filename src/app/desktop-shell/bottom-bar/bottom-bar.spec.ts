@@ -8,9 +8,8 @@ describe('BottomBar', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BottomBar]
-    })
-    .compileComponents();
+      imports: [BottomBar],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(BottomBar);
     component = fixture.componentInstance;

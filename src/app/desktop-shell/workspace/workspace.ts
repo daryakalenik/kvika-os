@@ -6,6 +6,4 @@ import { Component } from '@angular/core';
   templateUrl: './workspace.html',
   styleUrl: './workspace.scss',
 })
-export class Workspace {
-
-}
+export class Workspace {}

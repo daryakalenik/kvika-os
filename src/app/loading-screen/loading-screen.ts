@@ -6,6 +6,4 @@ import { Component } from '@angular/core';
   templateUrl: './loading-screen.html',
   styleUrl: './loading-screen.scss',
 })
-export class LoadingScreen {
-
-}
+export class LoadingScreen {}

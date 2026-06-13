@@ -6,6 +6,4 @@ import { Component } from '@angular/core';
   templateUrl: './desktop-shell.html',
   styleUrl: './desktop-shell.scss',
 })
-export class DesktopShell {
-
-}
+export class DesktopShell {}

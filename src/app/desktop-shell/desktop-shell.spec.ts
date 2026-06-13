@@ -8,9 +8,8 @@ describe('DesktopShell', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DesktopShell]
-    })
-    .compileComponents();
+      imports: [DesktopShell],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DesktopShell);
     component = fixture.componentInstance;
