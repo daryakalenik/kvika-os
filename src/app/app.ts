@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+
 import { LoadingScreen } from './loading-screen/loading-screen';
 import { DesktopShell } from './desktop-shell/desktop-shell';
+import { Layout } from './layout';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +10,6 @@ import { DesktopShell } from './desktop-shell/desktop-shell';
   imports: [LoadingScreen, DesktopShell],
   styleUrl: './app.scss',
 })
-export class App {}
+export class App {
+  readonly layoutService = inject(Layout);
+}
