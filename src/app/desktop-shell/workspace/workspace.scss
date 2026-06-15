@@ -1,5 +1,14 @@
 :host {
+  position: relative;
   display: block;
   height: 100%;
   width: 100%;
+}
+
+.window {
+  $offset:30px;
+
+  position: absolute;
+  top: $offset;
+  left: $offset;
 }

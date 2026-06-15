@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Window } from './window/window';
+import { ActiveWindowData, Layout } from '../../layout';
 
 @Component({
   selector: 'app-workspace',
@@ -7,4 +8,10 @@ import { Window } from './window/window';
   templateUrl: './workspace.html',
   styleUrl: './workspace.scss',
 })
-export class Workspace {}
+export class Workspace {
+  readonly layoutService = inject(Layout);
+
+  openWindow(data: ActiveWindowData) {
+    this.layoutService.activeWindowData.set(data);
+  }
+}

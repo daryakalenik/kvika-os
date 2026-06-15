@@ -1,1 +1,5 @@
-<app-window />
+@if (layoutService.activeWindowData()) {
+  <app-window class="window" />
+}
+
+<button (click)="openWindow({ id: 'test', icon: 'app-icon' })">app icon</button>
