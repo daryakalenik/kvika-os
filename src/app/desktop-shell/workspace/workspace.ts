@@ -17,6 +17,6 @@ export class Workspace {
   readonly desktopItems = DESKTOP_ITEMS;
 
   openWindow(data: DesktopItem) {
-    this.layoutService.activeWindowData.set({ ...data, folded: false });
+    this.layoutService.openNewWindow(data);
   }
 }

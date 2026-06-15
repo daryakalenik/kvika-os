@@ -11,12 +11,10 @@ export class Window {
   readonly layoutService = inject(Layout);
 
   closeWindow() {
-    this.layoutService.activeWindowData.set(null);
+    this.layoutService.closeWindow();
   }
 
   foldWindow() {
-    this.layoutService.activeWindowData.update((v) =>
-      v ? { ...v, folded: true } : null,
-    );
+    this.layoutService.foldWindow();
   }
 }

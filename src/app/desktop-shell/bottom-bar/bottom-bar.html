@@ -1,3 +1,12 @@
-@if (layoutService.activeWindowData()) {
-  <button (click)="toggleWindow()">app-icon</button>
+@for (item of layoutService.openWindows(); track item.id) {
+  <button (click)="toggleWindow(item)">
+    @if (item.id === layoutService.activeWindowId()) {
+      <span>THIS ONE IS ACTIVE WINDOW</span>
+    }
+
+    <span>{{ item.icon }}</span>
+    <span>{{ item.title }}</span>
+
+    <button (click)="closeWindow(item.id)">close</button>
+  </button>
 }

@@ -1,6 +1,7 @@
-@let data = layoutService.activeWindowData();
+@let id = layoutService.activeWindowId();
+@let data = layoutService.getWindowById(id);
 
-@if (data) {
+@if (id && data) {
   <div class="header">
     <div class="title">
       <span>{{ data.icon }}</span>

@@ -1,6 +1,6 @@
-@let windowData = layoutService.activeWindowData();
+@let activeWindowId = layoutService.activeWindowId();
 
-@if (windowData && !windowData.folded) {
+@if (activeWindowId) {
   <app-window class="window" />
 }
 
