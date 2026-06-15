@@ -3,6 +3,7 @@ import { Injectable, signal } from '@angular/core';
 export interface ActiveWindowData {
   id: string;
   icon: string;
+  folded: boolean;
 }
 
 @Injectable({

@@ -1,5 +1,9 @@
-@if (layoutService.activeWindowData()) {
+@let windowData = layoutService.activeWindowData();
+
+@if (windowData && !windowData.folded) {
   <app-window class="window" />
 }
 
-<button (click)="openWindow({ id: 'test', icon: 'app-icon' })">app icon</button>
+<button (click)="openWindow({ id: 'test', icon: 'app-icon', folded: false })">
+  app icon
+</button>
