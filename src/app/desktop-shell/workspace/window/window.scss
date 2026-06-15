@@ -1,0 +1,16 @@
+:host {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  max-height: 100%;
+  max-width: 100%;
+  background: pink;
+  border: 1px solid black;
+  height: 70%;
+  width: 50%;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  gap:12px;
+}
