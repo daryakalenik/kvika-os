@@ -1,8 +1,7 @@
 import { Injectable, signal } from '@angular/core';
+import { DesktopItem } from './constants/desktop-items.constant';
 
-export interface ActiveWindowData {
-  id: string;
-  icon: string;
+export interface ActiveWindowData extends DesktopItem {
   folded: boolean;
 }
 

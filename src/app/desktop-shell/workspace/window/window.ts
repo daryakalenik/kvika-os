@@ -8,7 +8,7 @@ import { Layout } from '../../../layout';
   styleUrl: './window.scss',
 })
 export class Window {
-  private readonly layoutService = inject(Layout);
+  readonly layoutService = inject(Layout);
 
   closeWindow() {
     this.layoutService.activeWindowData.set(null);

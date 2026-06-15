@@ -1,6 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { Window } from './window/window';
-import { ActiveWindowData, Layout } from '../../layout';
+import { Layout } from '../../layout';
+import {
+  DESKTOP_ITEMS,
+  DesktopItem,
+} from '../../constants/desktop-items.constant';
 
 @Component({
   selector: 'app-workspace',
@@ -10,8 +14,9 @@ import { ActiveWindowData, Layout } from '../../layout';
 })
 export class Workspace {
   readonly layoutService = inject(Layout);
+  readonly desktopItems = DESKTOP_ITEMS;
 
-  openWindow(data: ActiveWindowData) {
-    this.layoutService.activeWindowData.set(data);
+  openWindow(data: DesktopItem) {
+    this.layoutService.activeWindowData.set({ ...data, folded: false });
   }
 }

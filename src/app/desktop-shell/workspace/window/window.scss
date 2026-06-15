@@ -10,7 +10,19 @@
 }
 
 .header {
+  $gap: 12px;
   display: flex;
-  justify-content: flex-end;
-  gap:12px;
+  justify-content: space-between;
+
+  .title {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: $gap;
+  }
+
+  .actions {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: $gap;
+  }
 }

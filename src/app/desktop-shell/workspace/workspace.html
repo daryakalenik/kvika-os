@@ -4,6 +4,8 @@
   <app-window class="window" />
 }
 
-<button (click)="openWindow({ id: 'test', icon: 'app-icon', folded: false })">
-  app icon
-</button>
+@for (item of desktopItems; track item.id) {
+  <button (click)="openWindow(item)">
+    {{ item.title }}
+  </button>
+}

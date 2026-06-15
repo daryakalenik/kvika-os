@@ -1,5 +1,16 @@
-<div class="header">
-  <button (click)="foldWindow()">hide button</button>
-  <button (click)="closeWindow()">close button</button>
-</div>
-<div>some content</div>
+@let data = layoutService.activeWindowData();
+
+@if (data) {
+  <div class="header">
+    <div class="title">
+      <span>{{ data.icon }}</span>
+      <div>{{ data.title }}</div>
+    </div>
+
+    <div class="actions">
+      <button (click)="foldWindow()">hide button</button>
+      <button (click)="closeWindow()">close button</button>
+    </div>
+  </div>
+  <div>some content</div>
+}
