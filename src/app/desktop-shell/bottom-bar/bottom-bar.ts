@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Layout } from '../../layout';
+import { Layout } from '../../services/layout';
 import { DesktopItem } from '../../constants/desktop-items.constant';
 
 @Component({
@@ -13,7 +13,7 @@ export class BottomBar {
 
   toggleWindow(item: DesktopItem) {
     if (item.id == this.layoutService.activeWindowId()) {
-      this.layoutService.foldWindow();
+      this.layoutService.foldActiveWindow();
     } else {
       this.layoutService.showFoldedWindow(item.id);
     }

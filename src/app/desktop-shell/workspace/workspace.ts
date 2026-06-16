@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Window } from './window/window';
-import { Layout } from '../../layout';
+import { Layout } from '../../services/layout';
 import {
   DESKTOP_ITEMS,
   DesktopItem,

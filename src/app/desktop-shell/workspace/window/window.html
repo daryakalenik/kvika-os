@@ -1,5 +1,5 @@
 @let id = layoutService.activeWindowId();
-@let data = layoutService.getWindowById(id);
+@let data = id ? layoutService.getWindowById(id) : null;
 
 @if (id && data) {
   <div class="header">

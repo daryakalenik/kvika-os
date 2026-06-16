@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Layout } from '../../../layout';
+import { Layout } from '../../../services/layout';
 
 @Component({
   selector: 'app-window',
@@ -11,10 +11,10 @@ export class Window {
   readonly layoutService = inject(Layout);
 
   closeWindow() {
-    this.layoutService.closeWindow();
+    this.layoutService.closeActiveWindow();
   }
 
   foldWindow() {
-    this.layoutService.foldWindow();
+    this.layoutService.foldActiveWindow();
   }
 }
