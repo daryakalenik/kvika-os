@@ -42,9 +42,7 @@ export class Layout {
       }
 
       this.openWindows.update((v) => {
-        const windows = v.map((item) => ({ ...item, minimized: true }));
-
-        return [...windows, { ...data, minimized: false, zIndex: highest + 1 }];
+        return [...v, { ...data, minimized: false, zIndex: highest + 1 }];
       });
     }
 
@@ -158,7 +156,7 @@ export class Layout {
     const newWindows = windows.map((window) => {
       if (window.id === id) {
         return { ...window, minimized: false, zIndex: highest + 1 };
-      } else return { ...window, minimized: true };
+      } else return window;
     });
 
     this.openWindows.set(newWindows);
@@ -170,14 +168,11 @@ export class Layout {
 
     if (!windows.length) return;
 
-    if (!windows.some((window) => window.id === id && window.minimized)) {
-      console.warn(
-        'Layout invariant violated: minimized window was not found',
-        {
-          windowId: id,
-          openWindowIds: windows.map((window) => window.id),
-        },
-      );
+    if (!windows.find((window) => window.id === id)) {
+      console.warn('Layout invariant violated: window was not found', {
+        windowId: id,
+        openWindowIds: windows.map((window) => window.id),
+      });
       return;
     }
 

@@ -1,7 +1,7 @@
-@let activeWindowId = layoutService.activeWindowId();
-
-@if (activeWindowId) {
-  <app-window class="window" />
+@for (window of layoutService.openWindows(); track window.id) {
+  @if (!window.minimized) {
+    <app-window class="window" />
+  }
 }
 
 @for (item of desktopItems; track item.id) {
