@@ -4,9 +4,52 @@ import { DesktopItem } from '../constants/desktop-items.constant';
 export interface OpenWindowData extends DesktopItem {
   minimized: boolean;
   zIndex: number;
+  width: string;
+  height: string;
+  top: string;
+  left: string;
 }
 
 const defaultZIndex = 10;
+const defaultWidth = '50%';
+const defaultHeight = '70%';
+const defaultTop = '30px';
+const defaultLeft = '30px';
+
+function randomOffset(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function addRandomToPercent(
+  value: string,
+  minOffset: number,
+  maxOffset: number,
+): string {
+  const base = parseFloat(value);
+  const next = base + randomOffset(minOffset, maxOffset);
+
+  return `${next}%`;
+}
+
+function addRandomToPx(
+  value: string,
+  minOffset: number,
+  maxOffset: number,
+): string {
+  const base = parseFloat(value);
+  const next = base + randomOffset(minOffset, maxOffset);
+
+  return `${next}px`;
+}
+
+function createRandomWindowPosition() {
+  return {
+    width: addRandomToPercent(defaultWidth, -10, 10),
+    height: addRandomToPercent(defaultHeight, -10, 10),
+    top: addRandomToPx(defaultTop, -20, 80),
+    left: addRandomToPx(defaultLeft, -20, 80),
+  };
+}
 
 @Injectable({
   providedIn: 'root',
@@ -28,9 +71,16 @@ export class Layout {
       return;
     }
 
+    const randomWindowParams = createRandomWindowPosition();
+
     if (!windows.length) {
       this.openWindows.set([
-        { ...data, minimized: false, zIndex: defaultZIndex },
+        {
+          ...data,
+          minimized: false,
+          zIndex: defaultZIndex,
+          ...randomWindowParams,
+        },
       ]);
     } else {
       let highest = 0;
@@ -42,7 +92,15 @@ export class Layout {
       }
 
       this.openWindows.update((v) => {
-        return [...v, { ...data, minimized: false, zIndex: highest + 1 }];
+        return [
+          ...v,
+          {
+            ...data,
+            minimized: false,
+            zIndex: highest + 1,
+            ...randomWindowParams,
+          },
+        ];
       });
     }
 
@@ -192,5 +250,36 @@ export class Layout {
     this.activeWindowId.set(
       highestIndex != null ? newWindows[highestIndex].id : null,
     );
+  }
+
+  activateWindow(id: string) {
+    const windows = this.openWindows();
+
+    if (!windows.length) return;
+
+    if (!windows.some((window) => window.id === id)) {
+      console.warn('Layout invariant violated: window was not found', {
+        windowId: id,
+        openWindowIds: windows.map((window) => window.id),
+      });
+      return;
+    }
+
+    let highest = 0;
+
+    for (const window of windows) {
+      if (window.zIndex > highest && !window.minimized) {
+        highest = window.zIndex;
+      }
+    }
+
+    const newWindows = windows.map((window) => {
+      if (window.id === id) {
+        return { ...window, zIndex: highest + 1 };
+      } else return window;
+    });
+
+    this.openWindows.set(newWindows);
+    this.activeWindowId.set(id);
   }
 }

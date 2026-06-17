@@ -1,12 +1,12 @@
 :host {
   display: grid;
   grid-template-rows: auto 1fr;
+  min-width: 20%;
+  min-height: 50%;
   max-height: 100%;
   max-width: 100%;
   background: pink;
   border: 1px solid black;
-  height: 70%;
-  width: 50%;
 }
 
 .header {

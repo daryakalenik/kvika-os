@@ -1,6 +1,14 @@
 @for (window of layoutService.openWindows(); track window.id) {
   @if (!window.minimized) {
-    <app-window class="window" />
+    <app-window
+      class="window"
+      [data]="window"
+      [style.width]="window.width"
+      [style.height]="window.height"
+      [style.top]="window.top"
+      [style.left]="window.left"
+      [style.z-index]="window.zIndex"
+    />
   }
 }
 

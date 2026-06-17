@@ -1,13 +1,18 @@
-import { Component, inject } from '@angular/core';
-import { Layout } from '../../../services/layout';
+import { Component, inject, input } from '@angular/core';
+
+import { Layout, OpenWindowData } from '../../../services/layout';
 
 @Component({
   selector: 'app-window',
-  imports: [],
   templateUrl: './window.html',
   styleUrl: './window.scss',
+  host: {
+    '(click)': 'onWindowClick()',
+  },
 })
 export class Window {
+  readonly data = input.required<OpenWindowData>();
+
   readonly layoutService = inject(Layout);
 
   closeWindow() {
@@ -16,5 +21,9 @@ export class Window {
 
   foldWindow() {
     this.layoutService.foldActiveWindow();
+  }
+
+  onWindowClick() {
+    this.layoutService.activateWindow(this.data().id);
   }
 }

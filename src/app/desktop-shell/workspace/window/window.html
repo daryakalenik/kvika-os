@@ -1,17 +1,16 @@
-@let id = layoutService.activeWindowId();
-@let data = id ? layoutService.getWindowById(id) : null;
-
-@if (id && data) {
-  <div class="header">
-    <div class="title">
-      <span>{{ data.icon }}</span>
-      <div>{{ data.title }}</div>
-    </div>
-
-    <div class="actions">
-      <button (click)="foldWindow()">hide button</button>
-      <button (click)="closeWindow()">close button</button>
-    </div>
+<div class="header">
+  <div class="title">
+    <span>{{ data().icon }}</span>
+    <div>{{ data().title }}</div>
   </div>
-  <div>some content</div>
-}
+
+  <div class="actions">
+    <button (click)="foldWindow(); $event.stopPropagation()">
+      hide button
+    </button>
+    <button (click)="closeWindow(); $event.stopPropagation()">
+      close button
+    </button>
+  </div>
+</div>
+<div>some content</div>
